@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: activity-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/fitnessactivity
+      database: fitnessactivity
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost         # or your local IP
+    prefer-ip-address: true     # registers with IP instead of hostname
+    instance-id: ${spring.application.name}:${server.port}
+
+
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+  exchange:
+    name: fitness.exchange
+    key: activity.tracking
+  queue:
+    name: activity.queue
+
+
+
+
